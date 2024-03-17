@@ -9,7 +9,7 @@ import plotly.express as px
 # Page configuration
 st.set_page_config(
     page_title="Chile Consejero",
-    page_icon="🏂",
+    page_icon="🌶",
     layout="wide",
     initial_sidebar_state="expanded")
 
@@ -19,7 +19,9 @@ alt.themes.enable("dark")
 # Sidebar
 with st.sidebar:
     st.title('🌶 Chile Consejero')
-    
+    st.subheader('Elige los supuestos con ayuda de los dropdowns')
+    st.write('Decide facil y rapido la producción')
+
 #######################
 # Cargar información
 
@@ -37,17 +39,14 @@ escenario_negativo = pd.read_csv("Escenario_negativo.csv")
 
 def seleccionar_escenario():
 
-    opcion_e = st.selectbox('Seleccione un escenario: ', options= ['1','2','3'])
+    opcion_e = st.selectbox('Seleccione un escenario: ', options= ['Escenario Normal','Escenario Positivo','Escenario Negativo'])
 
-    if opcion_e == '1':
+    if opcion_e == 'Escenario Normal':
         escenario = demanda
-        st.write("Escenario Normal")
-    elif opcion_e == '2':
+    elif opcion_e == 'Escenario Positivo':
         escenario = escenario_positivo
-        st.write("Escenario Positivo")
-    elif opcion_e == '3':
+    elif opcion_e == 'Escenario Negativo':
         escenario = escenario_negativo
-        st.write("Escenario Negativo")
     else:
         print("Opción no válida. Por favor, intente de nuevo.")
         return seleccionar_escenario()
@@ -112,7 +111,9 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, inventarios,
             
         elif diferencia > limite_producto_mes_sup:
             st.header("La demanda supera al inventario disponible y al limite superior")
-            st.markdown("La demanda es de: ", {demanda_producto}, "El Inventario es de: ", {inventario_producto}, "Tu inventario restante sería: ", {diferencia})
+            st.markdown("La demanda es de: ", demanda_producto)
+            st.markdown("El Inventario es de: ", inventario_producto)
+            #st.markdown("Diferencia: ", diferencia)
             #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
         else:
             st.header("Diferencia positiva, pero excede el limite", "Demanda:", demanda_producto, "Inventario:", inventario_producto, "Diferencia:", diferencia, "Limite inferior:",limite_producto_mes_inf, "Límite superior:",limite_producto_mes_sup)
@@ -149,20 +150,16 @@ tamano_chile = select_t()
 #Seleccionar la tamaño del chile
 def select_cal():
 
-    opcion_cal = st.selectbox('Seleccione un tamaño: ', options= ['1','2','3','4','5','6'])
+    opcion_cal = st.selectbox('Seleccione la Calidad: ', options= ['Excelente Calidad', 'No Plagado','Plagado', 'Mala Calidad'])
 
-    if opcion_cal == '1':
+    if opcion_cal == 'Excelente Calidad':
         calidad_chile = 1
-        st.write("Excelente Calidad")
-    elif opcion_cal == '2':
+    elif opcion_cal == 'No plagado':
         calidad_chile = 2
-        st.write("No plagado")
-    elif opcion_cal == '3':
+    elif opcion_cal == 'Plagado':
         calidad_chile = 3
-        st.write("Plagado")
-    elif opcion_cal == '4':
+    elif opcion_cal == 'Mala Calidad':
         calidad_chile = 4
-        st.write("Mala calidad")
 
     return calidad_chile
 
