@@ -88,35 +88,27 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, inventarios,
          # Mensaje de alta producción para los meses de Junio, Julio y Agosto
         if mes in ['Junio', 'Julio', 'Agosto']:
             st.header('Produce: Mes de alta producción')
-            st.markdown("La demanda es de: ", demanda_producto)
-            st.markdown("El Inventario es de: ", inventario_producto)
-            #st.markdown("Si produces, el inventario restante será: ", diferencia)
-            #st.markdown("Recuerda que tus limites de inventario son: , Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
 
         # Verificar si la diferencia es menor a 0
         if diferencia < 0:
             st.header("No Producir")
-            st.markdown("La demanda es de: ", demanda_producto)
-            st.markdown("El Inventario es de: ", inventario_producto)
-            #st.markdown("Si produces, el inventario restante será: ", diferencia)
-            #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
 
         # Verificar si la diferencia es mayor a 0 y menor al límite
         elif 0 < diferencia < limite_producto_mes_inf:
             st.header("Produce")
-            st.markdown("La demanda es de: ", demanda_producto)
-            st.markdown("El Inventario es de: ", inventario_producto)
-            #st.markdown("Si produces, el inventario restante será: ", diferencia)
-            #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
             
         elif diferencia > limite_producto_mes_sup:
             st.header("La demanda supera al inventario disponible y al limite superior")
-            st.markdown("La demanda es de: ", demanda_producto)
-            st.markdown("El Inventario es de: ", inventario_producto)
-            #st.markdown("Diferencia: ", diferencia)
-            #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
         else:
-            st.header("Diferencia positiva, pero excede el limite", "Demanda:", demanda_producto, "Inventario:", inventario_producto, "Diferencia:", diferencia, "Limite inferior:",limite_producto_mes_inf, "Límite superior:",limite_producto_mes_sup)
+            st.write(f'Diferencia positiva, pero excede el limite, Demanda: {demanda_producto}, Inventario: {inventario_producto}, Diferencia: , {diferencia}, Limite inferior: {limite_producto_mes_inf}, Límite superior: {limite_producto_mes_sup}')
     else:
         st.header("Producto no encontrado en los dataframes.")
 
