@@ -157,3 +157,69 @@ def select_cal():
 
 # Llamar a la función y almacenar el resultado en la variable escenario
 calidad_chile = select_cal()
+
+# Suponiendo que tienes una lista de diccionarios que representan tu tabla de datos
+productos = [{'Producto': 'Bote jalapeños 215', 'Tamaño': 5, 'Calidad': 1, 'ID': '5,1'},
+ {'Producto': 'Bote jalapeños 2800', 'Tamaño': 1, 'Calidad': 1, 'ID': '1,1'},
+ {'Producto': 'Bote jalapeños 380', 'Tamaño': 4, 'Calidad': 1, 'ID': '4,1'},
+ {'Producto': 'Bote jalapeños 380', 'Tamaño': 3, 'Calidad': 1, 'ID': '3,1'},
+ {'Producto': 'Bote jalapeños 780', 'Tamaño': 1, 'Calidad': 1, 'ID': '1,1'},
+ {'Producto': 'Bote jalapeños 780', 'Tamaño': 2, 'Calidad': 1, 'ID': '2,1'},
+ {'Producto': 'Bote rajas verdes 105', 'Tamaño': 5, 'Calidad': 3, 'ID': '5,3'},
+ {'Producto': 'Bote rajas verdes 105', 'Tamaño': 5, 'Calidad': 4, 'ID': '5,4'},
+ {'Producto': 'Bote rajas verdes 215', 'Tamaño': 4, 'Calidad': 3, 'ID': '4,3'},
+ {'Producto': 'Bote rajas verdes 215', 'Tamaño': 5, 'Calidad': 3, 'ID': '5,3'},
+ {'Producto': 'Bote rajas verdes 215', 'Tamaño': 4, 'Calidad': 4, 'ID': '4,4'},
+ {'Producto': 'Bote rajas verdes 215', 'Tamaño': 5, 'Calidad': 4, 'ID': '5,4'},
+ {'Producto': 'Bote rajas verdes 380', 'Tamaño': 4, 'Calidad': 3, 'ID': '4,3'},
+ {'Producto': 'Bote rajas verdes 380', 'Tamaño': 3, 'Calidad': 3, 'ID': '3,3'},
+ {'Producto': 'Bote rajas verdes 380', 'Tamaño': 4, 'Calidad': 4, 'ID': '4,4'},
+ {'Producto': 'Bote rajas verdes 380', 'Tamaño': 3, 'Calidad': 4, 'ID': '3,4'},
+ {'Producto': 'Bote rajas verdes 800', 'Tamaño': 3, 'Calidad': 3, 'ID': '3,3'},
+ {'Producto': 'Bote rajas verdes 800', 'Tamaño': 2, 'Calidad': 3, 'ID': '2,3'},
+ {'Producto': 'Bote rajas verdes 800', 'Tamaño': 3, 'Calidad': 4, 'ID': '3,4'},
+ {'Producto': 'Bote rajas verdes 800', 'Tamaño': 2, 'Calidad': 4, 'ID': '2,4'},
+ {'Producto': 'Bote rajas verdes 2800','Tamaño': 1,'Calidad': 3,'ID': '1,3'},
+ {'Producto': 'Bote rajas verdes 2800','Tamaño': 2,'Calidad': 3,'ID': '2,3'},
+ {'Producto': 'Bote rajas verdes 2800','Tamaño': 1,'Calidad': 4,'ID': '1,4'},
+ {'Producto': 'Bote rajas verdes 2800','Tamaño': 2,'Calidad': 4,'ID': '2,4'},
+ {'Producto': 'Bote rodajas 2800', 'Tamaño': 1, 'Calidad': 2, 'ID': '1,2'},
+ {'Producto': 'Bote rodajas 2800', 'Tamaño': 2, 'Calidad': 2, 'ID': '2,2'},
+ {'Producto': 'Bote rodajas 800', 'Tamaño': 3, 'Calidad': 2, 'ID': '3,2'},
+ {'Producto': 'Bote rodajas 800', 'Tamaño': 4, 'Calidad': 2, 'ID': '4,2'},
+ {'Producto': 'Bote rodajas 380', 'Tamaño': 5, 'Calidad': 2, 'ID': '5,2'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 1,'Calidad': 3,'ID': '1,3'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 1,'Calidad': 4, 'ID': '1,4'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 2,'Calidad': 3,'ID': '2,3'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 2,'Calidad': 4,'ID': '2,4'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 3,'Calidad': 3,'ID': '3,3'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 3,'Calidad': 4,'ID': '3,4'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 4,'Calidad': 3,'ID': '4,3'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 4,'Calidad': 4,'ID': '4,4'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 5,'Calidad': 1,'ID': '5,1'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 5,'Calidad': 2,'ID': '5,2'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 5,'Calidad': 3,'ID': '5,3'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 5,'Calidad': 4,'ID': '5,4'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 6,'Calidad': 1,'ID': '6,1'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 6,'Calidad': 2,'ID': '6,2'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 6,'Calidad': 3,'ID': '6,3'},
+ {'Producto': 'Bote jalapeños en trozos 215','Tamaño': 6,'Calidad': 4,'ID': '6,4'}
+]
+
+# Función para encontrar las combinaciones de productos posibles
+def encontrar_combinaciones(tamano_chile, calidad_chile, lista_productos):
+    combinaciones = []
+    for producto in lista_productos:
+        if producto["Tamaño"] == tamano_chile and producto["Calidad"] == calidad_chile:
+            combinaciones.append(producto["Producto"])
+    return combinaciones
+
+# Llamada a la función con las variables de tamaño y calidad
+combinaciones_posibles = encontrar_combinaciones(tamano_chile, calidad_chile, productos)
+lista_combinaciones = []
+# Imprimir las combinaciones encontradas
+st.header("Combinaciones de productos posibles:")
+for combinacion in combinaciones_posibles:
+    print(combinacion)
+    lista_combinaciones.append(combinacion)
+st.write(combinaciones_posibles) 
