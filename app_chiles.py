@@ -15,15 +15,16 @@ st.set_page_config(
 
 alt.themes.enable("dark")
 
-"""## Archivos necesarios"""
+#######################
+# Cargar información
 
-demanda = pd.read_excel("/content/Ventas__Inventario_SanMarcos.xlsx", sheet_name= "Ventas_reducido")
-inventarios = pd.read_excel("/content/Ventas__Inventario_SanMarcos.xlsx", sheet_name= "Inventario_reducido")
-df_limite_inf = pd.read_excel("/content/Ventas__Inventario_SanMarcos.xlsx", sheet_name= "Limite_inf")
-df_limite_sup = pd.read_excel("/content/Ventas__Inventario_SanMarcos.xlsx", sheet_name= "Limite_sup")
-combinaciones = pd.read_excel("/content/Ventas__Inventario_SanMarcos.xlsx", sheet_name= "Calidad")
-escenario_positivo = pd.read_excel("/content/Ventas__Inventario_SanMarcos.xlsx", sheet_name= "Escenario_positivo")
-escenario_negativo = pd.read_excel("/content/Ventas__Inventario_SanMarcos.xlsx", sheet_name= "Escenario_negativo")
+demanda = pd.read_csv("Ventas_reducido.csv")
+inventarios = pd.read_csv("Inventario_reducido.csv")
+df_limite_inf = pd.read_csv("Limite_inf.csv")
+df_limite_sup = pd.read_csv("Limite_sup.csv")
+combinaciones = pd.read_csv("Calidad.csv")
+escenario_positivo = pd.read_csv("Escenario_positivo.csv")
+escenario_negativo = pd.read_csv("Escenario_negativo.csv")
 
 # Algortimo para determinar producción en función de la demanda
 
@@ -54,7 +55,7 @@ escenario = seleccionar_escenario()
 
 escenario
 
-"""## Seleccionar el mes"""
+# Seleccionar el mes
 
 # Selección del mes
 # Lista de meses válidos
