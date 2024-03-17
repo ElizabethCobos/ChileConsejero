@@ -16,6 +16,11 @@ st.set_page_config(
 alt.themes.enable("dark")
 
 #######################
+# Sidebar
+with st.sidebar:
+    st.title('🌶 Chile Consejero')
+    
+#######################
 # Cargar información
 
 demanda = pd.read_csv("Ventas_reducido.csv")
@@ -107,9 +112,7 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, inventarios,
             
         elif diferencia > limite_producto_mes_sup:
             st.header("La demanda supera al inventario disponible y al limite superior")
-            st.markdown("La demanda es de: ", demanda_producto)
-            st.markdown("El Inventario es de: ", inventario_producto)
-            #st.markdown("Diferencia: ", diferencia)
+            st.markdown("La demanda es de: ", {demanda_producto}, "El Inventario es de: ", {inventario_producto}, "Tu inventario restante sería: ", {diferencia})
             #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
         else:
             st.header("Diferencia positiva, pero excede el limite", "Demanda:", demanda_producto, "Inventario:", inventario_producto, "Diferencia:", diferencia, "Limite inferior:",limite_producto_mes_inf, "Límite superior:",limite_producto_mes_sup)
