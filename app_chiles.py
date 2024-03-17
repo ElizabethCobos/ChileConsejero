@@ -64,7 +64,7 @@ producto_elegido = opcion_p
 
 #DIFERENCIA ENTRE DEMANDA DEL PRODUCTO E INVENTARIO
 
-def calcular_diferencia_dataframe(mes, producto_elegido, escenario, df_inventarios, df_limite_inf, df_limite_sup):
+def calcular_diferencia_dataframe(mes, producto_elegido, escenario, inventarios, df_limite_inf, df_limite_sup):
 # Convertir el nombre del mes a título para coincidir con las columnas del dataframe
     mes = mes.title()
 
@@ -72,7 +72,7 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, df_inventari
     if producto_elegido in escenario['Producto'].values and producto_elegido in inventarios['Producto'].values:
         # Obtener la demanda y el inventario para el producto y mes seleccionados
         demanda_producto = escenario.loc[escenario['Producto'] == producto_elegido, mes].values[0]
-        inventario_producto = inventarios.loc[df_inventarios['Producto'] == producto_elegido, mes].values[0]
+        inventario_producto = inventarios.loc[inventarios['Producto'] == producto_elegido, mes].values[0]
 
         # Calcular la diferencia
         diferencia = demanda_producto - inventario_producto
@@ -86,31 +86,31 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, df_inventari
             st.header('Produce: Mes de alta producción')
             st.markdown("La demanda es de: ", demanda_producto)
             st.markdown("El Inventario es de: ", inventario_producto)
-            st.markdown("Si produces, el inventario restante será: ", diferencia)
-            st.markdown("Recuerda que tus limites de inventario son: , Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            #st.markdown("Si produces, el inventario restante será: ", diferencia)
+            #st.markdown("Recuerda que tus limites de inventario son: , Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
 
         # Verificar si la diferencia es menor a 0
         if diferencia < 0:
             st.header("No Producir")
             st.markdown("La demanda es de: ", demanda_producto)
             st.markdown("El Inventario es de: ", inventario_producto)
-            st.markdown("Si produces, el inventario restante será: ", diferencia)
-            st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            #st.markdown("Si produces, el inventario restante será: ", diferencia)
+            #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
 
         # Verificar si la diferencia es mayor a 0 y menor al límite
         elif 0 < diferencia < limite_producto_mes_inf:
             st.header("Produce")
             st.markdown("La demanda es de: ", demanda_producto)
             st.markdown("El Inventario es de: ", inventario_producto)
-            st.markdown("Si produces, el inventario restante será: ", diferencia)
-            st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            #st.markdown("Si produces, el inventario restante será: ", diferencia)
+            #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
             
         elif diferencia > limite_producto_mes_sup:
             st.header("La demanda supera al inventario disponible y al limite superior")
             st.markdown("La demanda es de: ", demanda_producto)
             st.markdown("El Inventario es de: ", inventario_producto)
-            st.markdown("Diferencia: ", diferencia)
-            st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
+            #st.markdown("Diferencia: ", diferencia)
+            #st.markdown("Recuerda que tus limites de inventario son, Limite Inferior: ",limite_producto_mes_inf, ",Límite superior:",limite_producto_mes_sup)
         else:
             st.header("Diferencia positiva, pero excede el limite", "Demanda:", demanda_producto, "Inventario:", inventario_producto, "Diferencia:", diferencia, "Limite inferior:",limite_producto_mes_inf, "Límite superior:",limite_producto_mes_sup)
     else:
@@ -118,36 +118,30 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, df_inventari
 
 # Ejemplo de uso de la función con el dataframe 'limite' incluido:
 resultado = calcular_diferencia_dataframe(mes, producto_elegido, escenario, inventarios, df_limite_inf, df_limite_sup)
-st.header(resultado)
+#st.header(resultado)
 
 #Seleccionar la tamaño del chile
-def select_tamano():
+def select_t():
 
-    opcion_t = st.selectbox('Seleccione un tamaño: ', options= ['1','2','3','4','5','6'])
+    opcion_tam = st.selectbox('Seleccione un tamaño: ', options= ["Grande-Grande","Grande-Mediano","Grande-Chico","Chico-Grande","Chico-Mediano","Chico-Chico"])
 
-    if opcion_t == '1':
+    if opcion_tam == 'Grande-Grande':
         tamano_chile = 1
-        st.write("Grande-Grande")
-    elif opcion_t == '2':
+    elif opcion_tam == 'Grande-Mediano':
         tamano_chile = 2
-        st.write("Grande-Mediano")
-    elif opcion_t == '3':
+    elif opcion_tam == 'Grande-Chico':
         tamano_chile = 3
-        st.write("Grande-Chico")
-    elif opcion_t == '4':
+    elif opcion_tam == 'Chico-Grande':
         tamano_chile = 4
-        st.write("Chico-Grande")
-    elif opcion_t == '5':
+    elif opcion_tam == 'Chico-Mediano':
         tamano_chile = 5
-        st.write("Chico-Mediano")
-    elif opcion_t == '6':
+    elif opcion_tam == 'Chico-Chico':
         tamano_chile = 6
-        st.write("Chico-Chico")
 
     return tamano_chile
 
 # Llamar a la función y almacenar el resultado en la variable escenario
-tamano_chile = select_tamano()
+tamano_chile = select_t()
 
 #Seleccionar la tamaño del chile
 def select_cal():
@@ -170,4 +164,4 @@ def select_cal():
     return calidad_chile
 
 # Llamar a la función y almacenar el resultado en la variable escenario
-calidad_chile = select_tamano()
+calidad_chile = select_cal()
