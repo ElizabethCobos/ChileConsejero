@@ -20,8 +20,8 @@ alt.themes.enable("dark")
 with st.sidebar:
     st.sidebar.image("SanMarcos.png")
     st.title('🌶 Chile Consejero')
-    st.subheader('Elige los supuestos con ayuda de los dropdowns')
-    st.write('Decide facil y rapido la producción')
+    st.subheader('Elige los supuestos con ayuda de los filtros')
+    st.write('Decide fácil y rápido la producción')
 
 
 #######################
@@ -90,25 +90,25 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, inventarios,
          # Mensaje de alta producción para los meses de Junio, Julio y Agosto
         if mes in ['Junio', 'Julio', 'Agosto']:
             st.header('Produce: Mes de alta producción')
-            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
-            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
+            st.write(f'La demanda es de:  {demanda_producto}.  El Inventario es de: {inventario_producto}.   Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son:  Limite Inferior: {limite_producto_mes_inf}  Límite superior: {limite_producto_mes_sup}')
 
         # Verificar si la diferencia es menor a 0
         if diferencia < 0 and mes not in ['Junio', 'Julio', 'Agosto']:
             st.header("No Producir")
-            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
-            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
+            st.write(f'La demanda es de:  {demanda_producto}.  El Inventario es de: {inventario_producto}.  Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son:   Limite Inferior: {limite_producto_mes_inf}  Límite superior: {limite_producto_mes_sup}')
 
         # Verificar si la diferencia es mayor a 0 y menor al límite
         elif 0 < diferencia < limite_producto_mes_inf:
             st.header("Produce")
-            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
-            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
+            st.write(f'La demanda es de:  {demanda_producto}.  El Inventario es de: {inventario_producto}.   Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son:   Limite Inferior: {limite_producto_mes_inf}   Límite superior: {limite_producto_mes_sup}')
             
         elif diferencia > limite_producto_mes_sup:
             st.header("La demanda supera al inventario disponible y al limite superior")
-            st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
-            st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
+            st.write(f'La demanda es de:  {demanda_producto}.   El Inventario es de: {inventario_producto}.   Si produces, el inventario restante será:  {diferencia}')
+            st.write(f'Recuerda que tus limites de inventario son:   Limite Inferior: {limite_producto_mes_inf}   Límite superior: {limite_producto_mes_sup}')
         else:
             st.write(f'Diferencia positiva, pero excede el limite, Demanda: {demanda_producto}, Inventario: {inventario_producto}, Diferencia: , {diferencia}, Limite inferior: {limite_producto_mes_inf}, Límite superior: {limite_producto_mes_sup}')
     else:
