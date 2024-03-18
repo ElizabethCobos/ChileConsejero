@@ -18,9 +18,11 @@ alt.themes.enable("dark")
 #######################
 # Sidebar
 with st.sidebar:
+    st.sidebar.image("SanMarcos.png")
     st.title('🌶 Chile Consejero')
     st.subheader('Elige los supuestos con ayuda de los dropdowns')
     st.write('Decide facil y rapido la producción')
+
 
 #######################
 # Cargar información
