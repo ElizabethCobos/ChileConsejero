@@ -1,7 +1,6 @@
 En este repositorio podrás encontrar todas las bases de datos necesarias para correr el código "app_chiles.py", algoritmo detrás de la aplicación: Chile Consejero 🌶🌶🌶
 
-Accede por medio de
-Chile Consejero : https://chileconsejero-ju2e65yrfdaba9yn6ancoe.streamlit.app/
+Accede por medio de: https://chileconsejero-ju2e65yrfdaba9yn6ancoe.streamlit.app/
 
 Recuerda que, si todavía no sabes como usar "Chile consejero", puedes ingresar a este video tutorial que te permitirá conocer todo de la app
 https://youtu.be/wsv8a3wUN3s
