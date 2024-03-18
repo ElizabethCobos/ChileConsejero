@@ -92,7 +92,7 @@ def calcular_diferencia_dataframe(mes, producto_elegido, escenario, inventarios,
             st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
 
         # Verificar si la diferencia es menor a 0
-        if diferencia < 0:
+        if diferencia < 0 and mes not in ['Junio', 'Julio', 'Agosto']:
             st.header("No Producir")
             st.write(f'La demanda es de:  {demanda_producto}, El Inventario es de: {inventario_producto}, Si produces, el inventario restante será:  {diferencia}')
             st.write(f'Recuerda que tus limites de inventario son, Limite Inferior: {limite_producto_mes_inf},Límite superior: {limite_producto_mes_sup}')
